@@ -235,6 +235,7 @@ export default class BitMatrix /*implements Cloneable*/ {
     /**
      * Clears all bits (sets to false).
      */
+    // 清空，全部设置0
     public clear(): void {
         const bits = this.bits;
         const max = bits.length;
@@ -304,6 +305,7 @@ export default class BitMatrix /*implements Cloneable*/ {
      * @param y row to set
      * @param row {@link BitArray} to copy from
      */
+    // 设置一行的内容
     public setRow(y: number /*int*/, row: BitArray): void {
         System.arraycopy(row.getBitArray(), 0, this.bits, y * this.rowSize, this.rowSize);
     }
@@ -474,6 +476,7 @@ export default class BitMatrix /*implements Cloneable*/ {
     }
 
     /*@Override*/
+    // 非java项目，重写这个有什么用？？？？
     public hashCode(): number /*int*/ {
         let hash = this.width;
         hash = 31 * hash + this.width;
