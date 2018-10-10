@@ -23,6 +23,8 @@
  *
  * @author Sean Owen
  */
+// 图像处理中的透视变换。opencv也有这样的代码
+// https://blog.csdn.net/xiaowei_cqu/article/details/26471527
 export default class PerspectiveTransform {
 
     private constructor(private a11: number/*float*/, private a21: number/*float*/, private a31: number/*float*/,

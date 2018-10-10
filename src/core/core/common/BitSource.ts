@@ -30,7 +30,6 @@ import Exception from './../Exception';
 
 // 这提供了从字节序列中一次读取位的简单抽象，其中读取的位数通常不是8的倍数。这个类是线程安全的，但不可重入 - 除非调用者修改它传入的字节数组，在这种情况下，所有的投注都关闭。
 // 这应该是原封不动地抄的java的代码注释，否则不应该存在线程安全一说
-// 该类的资源是一次性的，读完的
 export default class BitSource {
 
     private byteOffset: number; /*int*/

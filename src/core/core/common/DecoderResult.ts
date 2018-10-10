@@ -25,6 +25,7 @@
  *
  * @author Sean Owen
  */
+// 封装解码比特矩阵的结果。 这通常适用于二维条码格式。 现在它包含获得的原始字节，以及这些字节的字符串解释（如果适用）
 export default class DecoderResult {
 
     private numBits: number; /*int*/
@@ -74,6 +75,7 @@ export default class DecoderResult {
     /**
      * @return text representation of the result
      */
+    // 获取二维码的文本
     public getText(): string {
         return this.text;
     }

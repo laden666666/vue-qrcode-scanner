@@ -24,6 +24,7 @@ import Exception from './../Exception';
 /**
  * @author Sean Owen
  */
+// 默认网格采样器??
 export default class DefaultGridSampler extends GridSampler {
 
     /*@Override*/

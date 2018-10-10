@@ -159,7 +159,7 @@ export default class BitArray /*implements Cloneable*/ {
         }
         const bits = this.bits;
         let bitsOffset = Math.floor(from / 32);
-        // 按位取反做什么？？？
+
         let currentBits = ~bits[bitsOffset];
         // mask off lesser bits first
         // from取出最低的32位，然后造一个等长的1111...数，取反与currentBits相遇。这样丹玉from的位的与1，小于form的位数与0
