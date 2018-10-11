@@ -28,6 +28,7 @@ import CharacterSetECI from './CharacterSetECI';
  * @author Sean Owen
  * @author Alex Dupre
  */
+// java.lang.Object org.apache.commons.lang.StringUtils的实现？？？？
 export default class StringUtils {
 
     public static SHIFT_JIS = CharacterSetECI.SJIS.getName(); // "SJIS"
@@ -49,6 +50,7 @@ export default class StringUtils {
      *  {@link #SHIFT_JIS}, {@link #UTF8}, {@link #ISO88591}, or the platform
      *  default encoding if none of these can possibly be correct
      */
+    // 猜测编码方式，对编码方式不是很了解，此源码略过
     public static guessEncoding(bytes: Uint8Array, hints: Map<DecodeHintType, any>): string {
         if (hints !== null && hints !== undefined && undefined !== hints.get(DecodeHintType.CHARACTER_SET)) {
             return hints.get(DecodeHintType.CHARACTER_SET).toString();
