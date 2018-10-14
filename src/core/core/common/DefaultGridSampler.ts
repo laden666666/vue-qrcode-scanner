@@ -28,18 +28,25 @@ import Exception from './../Exception';
 export default class DefaultGridSampler extends GridSampler {
 
     /*@Override*/
-    public sampleGrid(image: BitMatrix,
+    public sampleGrid(
+        // 要变换的图片
+        image: BitMatrix,
+        // 输出图片的宽度
         dimensionX: number /*int*/,
+        // 输出图片的高度
         dimensionY: number /*int*/,
+        // 原4四边形的坐标
         p1ToX: number/*float*/, p1ToY: number/*float*/,
         p2ToX: number/*float*/, p2ToY: number/*float*/,
         p3ToX: number/*float*/, p3ToY: number/*float*/,
         p4ToX: number/*float*/, p4ToY: number/*float*/,
+        // 目标平面四边形坐标
         p1FromX: number/*float*/, p1FromY: number/*float*/,
         p2FromX: number/*float*/, p2FromY: number/*float*/,
         p3FromX: number/*float*/, p3FromY: number/*float*/,
         p4FromX: number/*float*/, p4FromY: number/*float*/): BitMatrix /*throws NotFoundException*/ {
 
+        // 生成透视变换的对象
         const transform = PerspectiveTransform.quadrilateralToQuadrilateral(
             p1ToX, p1ToY, p2ToX, p2ToY, p3ToX, p3ToY, p4ToX, p4ToY,
             p1FromX, p1FromY, p2FromX, p2FromY, p3FromX, p3FromY, p4FromX, p4FromY);
@@ -55,10 +62,14 @@ export default class DefaultGridSampler extends GridSampler {
         if (dimensionX <= 0 || dimensionY <= 0) {
             throw new Exception(Exception.NotFoundException);
         }
+
+        // 创建输出的图片
         const bits = new BitMatrix(dimensionX, dimensionY);
+        // 做一个数组，数组长度n是宽的2倍，这样0，2，3...2n位分别是x1,x2,x3....xn；1，3，4...2n + 1位分别是y1,y2,y3....yn
         const points = new Float32Array(2 * dimensionX);
         for (let y = 0; y < dimensionY; y++) {
             const max = points.length;
+            // +0.5????????
             const iValue: number /*float*/ = y + 0.5;
             for (let x = 0; x < max; x += 2) {
                 points[x] = /*(float)*/ (x / 2) + 0.5;

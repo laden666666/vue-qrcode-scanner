@@ -33,6 +33,13 @@ import Exception from './../Exception';
  *
  * @author Sean Owen
  */
+
+/*
+*给定图像中QR码的取景器图案的位置，该类的实现可以对图像中的正确点进行采样以重建QR码，从而解决透视失真。 它是抽象的，因为它相对昂贵，应该被允许利用特定于平台的优化实现，如Sun的Java高级成像库，但在其他环境（如J2ME）中可能无法使用，反之亦然。
+
+*可以通过调用{@link #setGridSampler（GridSampler）}来控制所使用的实现
+*使用实现此接口的类的实例。
+*/
 abstract class GridSampler {
 
     /**
