@@ -67,9 +67,11 @@ abstract class GridSampler {
      * @param p4FromX point 4 image X
      * @param p4FromY point 4 image Y
      *
+     * 表示在由“from”参数定义的区域内从图像中采样的点网格
      * @return {@link BitMatrix} representing a grid of points sampled from the image within a region
      *   defined by the "from" parameters
      *
+     * 如果无法对图像进行采样，例如，如果给定点定义的变换无效或导致图像边界外的采样
      * @throws NotFoundException if image can't be sampled, for example, if the transformation defined
      *   by the given points is invalid or results in sampling outside the image boundaries
      */
@@ -108,6 +110,13 @@ abstract class GridSampler {
      * @param image image into which the points should map
      * @param points actual points in x1,y1,...,xn,yn form
      * @throws NotFoundException if an endpoint is lies outside the image boundaries
+     */
+    /**
+     *<p>根据图像的尺寸检查已转换为图像上的采样点的一组点，以查看该点是否在图像内。</ p>
+     
+    <p>如果发现端点距离图像不足（小于1个像素），则此方法实际上会将端点“轻推”回到图像上。 这导致QR码一直运行到图像边界的图像中的取景器图案检测不完善。</ p>
+    
+    <p>为了提高效率，该方法将从线的任一端检查点，直到找到一个点在图像内。 因为假设点集是线性的，所以这是有效的。</ p>
      */
     protected static checkAndNudgePoints(
         image: BitMatrix,
