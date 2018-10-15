@@ -33,6 +33,9 @@ import Exception from './../Exception';
  * @author dswitkin@google.com (Daniel Switkin)
  * @author Sean Owen
  */
+// 全局直方图二值化器v
+// 此Binarizer实现使用旧的ZXing全局直方图方法。 它适用于没有足够CPU或内存的低端移动设备使用本地阈值算法。 但是，因为它选择了一个全局黑点，它无法处理困难的阴影和渐变。
+// 更快的移动设备和所有桌面应用程序应该使用混合二进制化器。
 export default class GlobalHistogramBinarizer extends Binarizer {
 
     private static LUMINANCE_BITS = 5;

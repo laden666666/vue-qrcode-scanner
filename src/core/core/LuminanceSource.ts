@@ -29,6 +29,7 @@ import StringBuilder from './util/StringBuilder';
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
+// 此类层次结构的目的是将跨平台的不同位图实现抽象为用于请求灰度亮度值的标准接口。 该接口仅提供不可变的方法; 因此裁剪和旋转会创建副本。 这是为了确保一个Reader不会修改原始亮度源，并使链中的其他读取器处于未知状态。
 abstract class LuminanceSource {
 
     protected constructor(private width: number /*int*/, private height: number /*int*/) { }

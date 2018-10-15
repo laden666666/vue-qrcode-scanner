@@ -28,6 +28,7 @@ import BitMatrix from './common/BitMatrix';
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
+// 此类层次结构提供了一组将亮度数据转换为1位数据的方法。 它允许算法以多态方式变化，例如允许用于服务器的非常昂贵的阈值技术和用于移动的快速阈值技术。 它还允许实现变化，例如， 适用于Android的JNI版本和适用于其他平台的Java后备版本。
 abstract class Binarizer {
 
     protected constructor(private source: LuminanceSource) { }
