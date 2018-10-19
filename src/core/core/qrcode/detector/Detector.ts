@@ -41,6 +41,7 @@ import AlignmentPatternFinder from './AlignmentPatternFinder';
  *
  * @author Sean Owen
  */
+// 封装可以检测图像中QR码的逻辑，即使QR码旋转或歪斜，也可能部分遮挡
 export default class Detector {
 
     private resultPointCallback: ResultPointCallback;

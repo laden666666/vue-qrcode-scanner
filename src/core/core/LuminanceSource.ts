@@ -46,6 +46,7 @@ abstract class LuminanceSource {
      *            Always use the returned object, and ignore the .length of the array.
      * @return An array containing the luminance data.
      */
+    // 从底层平台的位图获取一行亮度数据。 值范围从0（黑色）到255（白色）。 因为Java没有无符号字节类型，所以调用者必须按位并且每个值都使用0xff。 优选地，该方法的实现仅获取该行而不是整个图像，因为可以不安装2D读取器并且可能永远不会调用getMatrix（）。
     public abstract getRow(y: number /*int*/, row?: Uint8ClampedArray): Uint8ClampedArray;
 
     /**
