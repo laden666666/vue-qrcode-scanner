@@ -51,6 +51,7 @@ abstract class Binarizer {
      * @return The array of bits for this row (true means black).
      * @throws NotFoundException if row can't be binarized
      */
+    // 将一行亮度数据转换为1位数据。 实际上可以进行转换，或返回缓存数据。 呼叫者应该假设这种方法很昂贵并尽可能少地称之为。 此方法用于解码1D条形码，可以选择应用锐化。 对于一次只检查一行像素的调用者，应该重复使用相同的BitArray，并在每次调用性能时传入。 但是，如果需要，一次保留多行是合法的。
     public abstract getBlackRow(y: number/*iny*/, row: BitArray): BitArray; /*throws NotFoundException*/
 
     /**
@@ -62,6 +63,7 @@ abstract class Binarizer {
      * @return The 2D array of bits for the image (true means black).
      * @throws NotFoundException if image can't be binarized to make a matrix
      */
+    、、 将亮度数据的2D数组转换为1位数据。 如上所述，假设此方法很昂贵，并且不会重复调用它。 此方法用于解码2D条形码，可能会也可能不会应用锐化。 因此，此矩阵中的一行可能与使用getBlackRow（）获取的行不同，因此不要在它们之间混合和匹配。
     public abstract getBlackMatrix(): BitMatrix; /*throws NotFoundException*/
 
     /**
