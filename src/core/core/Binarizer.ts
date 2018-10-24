@@ -29,6 +29,7 @@ import BitMatrix from './common/BitMatrix';
  * @author dswitkin@google.com (Daniel Switkin)
  */
 // 此类层次结构提供了一组将亮度数据转换为1位数据的方法。 它允许算法以多态方式变化，例如允许用于服务器的非常昂贵的阈值技术和用于移动的快速阈值技术。 它还允许实现变化，例如， 适用于Android的JNI版本和适用于其他平台的Java后备版本。
+// 我理解是一个将图片转为二值图的策略类的模板，用于封装不同的二值化算法。
 abstract class Binarizer {
 
     protected constructor(private source: LuminanceSource) { }
@@ -63,7 +64,7 @@ abstract class Binarizer {
      * @return The 2D array of bits for the image (true means black).
      * @throws NotFoundException if image can't be binarized to make a matrix
      */
-    、、 将亮度数据的2D数组转换为1位数据。 如上所述，假设此方法很昂贵，并且不会重复调用它。 此方法用于解码2D条形码，可能会也可能不会应用锐化。 因此，此矩阵中的一行可能与使用getBlackRow（）获取的行不同，因此不要在它们之间混合和匹配。
+    // 将亮度数据的2D数组转换为1位数据。 如上所述，假设此方法很昂贵，并且不会重复调用它。 此方法用于解码2D条形码，可能会也可能不会应用锐化。 因此，此矩阵中的一行可能与使用getBlackRow（）获取的行不同，因此不要在它们之间混合和匹配。
     public abstract getBlackMatrix(): BitMatrix; /*throws NotFoundException*/
 
     /**

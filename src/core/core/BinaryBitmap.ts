@@ -29,9 +29,11 @@ import BitArray from './common/BitArray';
 import BitMatrix from './common/BitMatrix';
 import LuminanceSource from './LuminanceSource';
 
+// 二值图，其实就是一个位矩阵
 export default class BinaryBitmap {
     private matrix: BitMatrix;
 
+    // 由一个
     public constructor(private binarizer: Binarizer) {
         if (binarizer === null) {
             throw new Exception(Exception.IllegalArgumentException, 'Binarizer must be non-null.');
